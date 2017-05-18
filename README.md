@@ -66,3 +66,12 @@ Primal-dual Schema思想：
 对F中的每个集合S，引入一个变量 xS
 xS=0 表示SC ， xS=1 表示SC
 集合覆盖问题表示为整数规划
+
+## 编辑距离
+编辑距离（Edit Distance），又称Levenshtein距离，是指两个字串之间，由一个转成另一个所需的最少编辑操作次数。许可的编辑操作包括将一个字符替换成另一个字符，插入一个字符，删除一个字符。一般来说，编辑距离越小，两个串的相似度越大。
+用edit(i,j)表示stringA[0:i]和stringB[0：j]的编辑距离：
+则状态转移公式为：
+if i == 0 且 j > 0，edit(i, j) = j
+if i > 0 且j == 0，edit(i, j) = i
+if i ≥ 1  且 j ≥ 1 ，edit(i, j) = min{ edit(i-1, j) + 1, edit(i, j-1) + 1, edit(i-1, j-1) + f(i, j) }
+当stringA[0:i]==stringB[0：j]时，f(i, j) = 0；否则，f(i, j) = 1。
